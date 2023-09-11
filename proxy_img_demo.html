@@ -11,7 +11,7 @@
             const imgNode = document.createElement('img')
             document.body.append(imgNode)
 
-            // 做一个中间过渡，当代理加载完图时，会触发onload改变真实图片
+            // 做一个中间过渡，当代理加载完图时，会触发onload改变真实图片.
             const imgProxy = new Image()
             imgProxy.onload = function() {
                 setTimeout(() => {
