@@ -7,7 +7,7 @@
 <body></body>
 <script>
     window.onload = function() {
-        const myImage = (function () {
+        /*const myImage = (function () {
             const imgNode = document.createElement('img')
             document.body.append(imgNode)
 
@@ -27,7 +27,45 @@
             }
         })()
 
-        myImage.setSrc('https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png')
+        myImage.setSrc('https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png')*/
+
+        // 优化代码
+        const MyImg = (function() {
+            const imgNode = document.createElement('img')
+            document.body.appendChild(imgNode)
+            return {
+                setSrc: function (src) {
+                    imgNode.src = src
+                }
+            }
+        })()
+
+        const ProxyImg = (function() {
+            const img = new Image() // 内存里面有小图片
+            img.onload = function () {
+                setTimeout(() => {
+                    MyImg.setSrc(this.src)
+                }, 3000)
+            }
+            return {
+                setSrc: function (src) {
+                    MyImg.setSrc('https://cloudsto.static.chanjet.com/90011602635/2022/4/27/hsy-1653619166739.png')
+                    img.src = src
+                }
+            }
+        })()
+
+        ProxyImg.setSrc('https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png')
+
+
+
+
+
+
+
+
+
+
     }
 </script>
 </html>
