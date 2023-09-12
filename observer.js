@@ -12,7 +12,8 @@ shopObj.listen = function (brand,fn) {
 }
 
 // 触发事件
-shopObj.publish = function (brand) {
+shopObj.publish = function () {
+    const brand = arguments[0]
     const fns = this.list[brand] || []
     for (let i = 0; i < fns.length; i++ ) {
         const fn = fns[i]
@@ -35,3 +36,4 @@ shopObj.publish('Apple', 'iphone15')
 // 发布者2
 shopObj.publish('Huawei', 'mate50')
 shopObj.publish('Huawei', 'mate60')
+shopObj.publish('Xiaomi', 'mate60')
