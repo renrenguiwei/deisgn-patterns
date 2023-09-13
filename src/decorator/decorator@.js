@@ -5,7 +5,8 @@ class Boy {
     }
 }
 
-function run () {
+function run (target, key, descriptor) {
+    console.log(target, key, descriptor)
     console.log('跑步')
 }
 

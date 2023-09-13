@@ -51,7 +51,8 @@ var Boy = (_class = function () {
 }(), (_applyDecoratedDescriptor(_class.prototype, 'speak', [run], Object.getOwnPropertyDescriptor(_class.prototype, 'speak'), _class.prototype)), _class);
 
 
-function run() {
+function run(target, key, descriptor) {
+    console.log(target, key, descriptor);
     console.log('跑步');
 }
 
