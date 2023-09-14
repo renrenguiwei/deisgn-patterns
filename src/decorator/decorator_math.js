@@ -2,20 +2,25 @@
 
 class Math {
 
-    @log
+    @log(100)
     add(a, b) {
         return a + b
     }
 }
 
-function log(target, name, descriptor) {
-    const oldValue = descriptor.value
-    descriptor.value = function() {
-        console.log(`调用${name}方法`, arguments)
-        return oldValue.apply(target, arguments)
+function log(num) {
+    return function log(target, name, descriptor) {
+        const oldValue = descriptor.value
+        const _num = num || 0
+        descriptor.value = function(...arg) {
+            arg[0] += _num
+            arg[1] += _num
+            console.log(`调用${name}方法`, arg)
+            return oldValue.apply(target, arg)
+        }
+        return descriptor
     }
-    return descriptor
 }
 
 const math = new Math()
-math.add(12, 23)
+console.log(math.add(1, 2))

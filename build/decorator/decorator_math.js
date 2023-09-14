@@ -2,7 +2,7 @@
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _desc, _value, _class;
+var _dec, _desc, _value, _class;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -37,7 +37,7 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 // 添加 打印日志
 
-var Math = (_class = function () {
+var Math = (_dec = log(100), (_class = function () {
     function Math() {
         _classCallCheck(this, Math);
     }
@@ -50,17 +50,26 @@ var Math = (_class = function () {
     }]);
 
     return Math;
-}(), (_applyDecoratedDescriptor(_class.prototype, "add", [log], Object.getOwnPropertyDescriptor(_class.prototype, "add"), _class.prototype)), _class);
+}(), (_applyDecoratedDescriptor(_class.prototype, "add", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "add"), _class.prototype)), _class));
 
 
-function log(target, name, descriptor) {
-    var oldValue = descriptor.value;
-    descriptor.value = function () {
-        console.log("\u8C03\u7528" + name + "\u65B9\u6CD5", arguments);
-        return oldValue.apply(target, arguments);
+function log(num) {
+    return function log(target, name, descriptor) {
+        var oldValue = descriptor.value;
+        var _num = num || 0;
+        descriptor.value = function () {
+            for (var _len = arguments.length, arg = Array(_len), _key = 0; _key < _len; _key++) {
+                arg[_key] = arguments[_key];
+            }
+
+            arg[0] += _num;
+            arg[1] += _num;
+            console.log("\u8C03\u7528" + name + "\u65B9\u6CD5", arg);
+            return oldValue.apply(target, arg);
+        };
+        return descriptor;
     };
-    return descriptor;
 }
 
 var math = new Math();
-math.add(12, 23);
+console.log(math.add(1, 2));
