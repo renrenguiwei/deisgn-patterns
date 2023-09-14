@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -35,39 +35,32 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
     return desc;
 }
 
-var Boy = (_class = function () {
-    function Boy() {
-        _classCallCheck(this, Boy);
+// 添加 打印日志
+
+var Math = (_class = function () {
+    function Math() {
+        _classCallCheck(this, Math);
     }
 
-    _createClass(Boy, [{
-        key: 'speak',
-        value: function speak() {
-            console.log('唱歌');
+    _createClass(Math, [{
+        key: "add",
+        value: function add(a, b) {
+            return a + b;
         }
     }]);
 
-    return Boy;
-}(), (_applyDecoratedDescriptor(_class.prototype, 'speak', [run], Object.getOwnPropertyDescriptor(_class.prototype, 'speak'), _class.prototype)), _class);
+    return Math;
+}(), (_applyDecoratedDescriptor(_class.prototype, "add", [log], Object.getOwnPropertyDescriptor(_class.prototype, "add"), _class.prototype)), _class);
 
-/**
- * @param target Boy对象
- * @param key    被装饰的方法名
- * @param descriptor    描述装饰的方法
- */
 
-function run(target, key, descriptor) {
-    console.log(target, key, descriptor);
-    // {}
-    // speak
-    // {
-    //   value: [Function: speak],
-    //   writable: true,
-    //   enumerable: false,
-    //   configurable: true
-    // }
-    console.log('跑步');
+function log(target, name, descriptor) {
+    var oldValue = descriptor.value;
+    descriptor.value = function () {
+        console.log("\u8C03\u7528" + name + "\u65B9\u6CD5", arguments);
+        return oldValue.apply(target, arguments);
+    };
+    return descriptor;
 }
 
-var boy = new Boy();
-boy.speak();
+var math = new Math();
+math.add(12, 23);
