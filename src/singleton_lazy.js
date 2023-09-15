@@ -1,21 +1,20 @@
 class LazySingletonTest {
-    main() {
-        const LazySignleton1 = LazySingnleton.getInstance()
-        const LazySignleton2 = LazySingnleton.getInstance()
-        console.log(LazySignleton1 === LazySignleton2)
+    static main() {
+        const LazySingleton1 = LazySingleton.getInstance();
+        const LazySingleton2 = LazySingleton.getInstance();
+        console.log(LazySingleton1 === LazySingleton2);
     }
 }
 
-class LazySingnleton {
-    static _instance: LazySingnleton
+class LazySingleton {
+    static _instance  = null
 
     static getInstance() {
         if (this._instance === null) {
-            this._instance = new LazySingnleton()
+            this._instance = new LazySingleton();
         }
-        return this._instance
+        return this._instance;
     }
 }
 
-const test = new LazySingletonTest()
-test.main()
+LazySingletonTest.main();
