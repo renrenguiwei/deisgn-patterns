@@ -36,7 +36,6 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 }
 
 // 添加 打印日志
-
 var Math = (_dec = log(100), (_class = function () {
     function Math() {
         _classCallCheck(this, Math);
