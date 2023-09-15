@@ -13,7 +13,7 @@ var Boy = function Boy(girl) {
 
 var ProxyObj = function ProxyObj(girl) {
     this.girl = girl;
-    this.sendGift = function (gift) {
+    this.sendGift = function (gift3333) {
         new Boy(this.girl).sendGift(gift);
     };
 };

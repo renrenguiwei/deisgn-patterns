@@ -1,4 +1,9 @@
 node_modules
+/.awcache
 /.idea
-build
+/common
+dist
 yarn-error.log
+packages
+.cache
+src/pages/devTools/page/DevUtil.ts
