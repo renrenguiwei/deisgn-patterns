@@ -39,16 +39,18 @@ Chain.prototype.setNextStep = function (step) {
 Chain.prototype.passRequest = function () {
     const ret = this.fn.apply(this, arguments)
     if (ret === 'goNext') {
+        // 利用apply让下一步方法绑定下一步实例
         this.nextStep &&
         this.nextStep.passRequest.apply(this.nextStep, arguments)
     }
 }
-
+// 实例化方法
 const chainOrder500 = new Chain(order500)
 const chainOrder400 = new Chain(order400)
 const chainOrder200 = new Chain(order200)
 const chainOrderNormal = new Chain(orderNormal)
 
+// 赋值下一步
 chainOrder500.setNextStep(chainOrder400)
 chainOrder400.setNextStep(chainOrder200)
 chainOrder200.setNextStep(chainOrderNormal)
