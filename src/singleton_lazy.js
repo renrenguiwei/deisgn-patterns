@@ -1,5 +1,5 @@
 class LazySingletonTest {
-    static main() {
+    main() { // javascript标准语法 默认是public，是不需要额外加
         const LazySingleton1 = LazySingleton.getInstance();
         const LazySingleton2 = LazySingleton.getInstance();
         console.log(LazySingleton1 === LazySingleton2);
@@ -17,4 +17,4 @@ class LazySingleton {
     }
 }
 
-LazySingletonTest.main();
+new LazySingletonTest().main();
