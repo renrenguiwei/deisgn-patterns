@@ -1,3 +1,6 @@
+# 文件不生效的情况，执行下面操作
+# git rm -r --cached .
+# push代码
 node_modules
 /.idea
 /build
