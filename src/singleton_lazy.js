@@ -1,3 +1,4 @@
+// 懒汉模式：获取类实例时，实例化
 class LazySingletonTest {
     main() { // javascript标准语法 默认是public，是不需要额外加
         const LazySingleton1 = LazySingleton.getInstance();
