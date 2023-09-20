@@ -13,6 +13,8 @@ function UserFactory(role) {
             return new User('admin', ['main', 'detail'])
         case 'editor':
             return new User('admin', ['main', 'detail'])
+        default:
+            throw new Error('参数错误')
     }
 }
 
