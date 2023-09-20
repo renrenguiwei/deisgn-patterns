@@ -8,6 +8,7 @@ function Employee(name ,age) {
     }*/
 }
 
+// 放原型里，方法在实例化后，不管有几个实例都存在一个方法
 Employee.prototype.say = function () {
     console.log(this.name, this.age)
 }
