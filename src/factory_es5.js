@@ -1,4 +1,4 @@
-// 工厂方法
+// 工厂方法 - ES5
 function UserFactory(role) {
     // 需被实例化的业务方法
     function User(role, pages) {
