@@ -1,33 +1,43 @@
 // 建造者模式 - 将 类的方法、实例实现 分开实现
-
 class Navbar {
-    init() {
+    async init() {
         console.log('navbar-init')
     }
-    getData() {
-        console.log('navbar-getData')
+    async getData() {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve('navbar-getData')
+            }, 1000)
+        })
+        // console.log('navbar-getData')
     }
-    render() {
+    async render() {
         console.log('navbar-render')
     }
 }
 class List {
-    init() {
+    async init() {
         console.log('list-init')
     }
-    getData() {
-        console.log('list-getData')
+    async getData() {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve('list-getData')
+            }, 1000)
+        })
+        // console.log('list-getData')
     }
-    render() {
+    async render() {
         console.log('list-render')
     }
 }
 
 class Operator {
-    startBuild(builder) {
-        builder.init()
-        builder.getData()
-        builder.render()
+    async startBuild(builder) {
+        await builder.init()
+        const data = await builder.getData()
+        console.log(data)
+        await builder.render()
     }
 }
 
