@@ -9,7 +9,7 @@ class HungrySingletonTest {
 }
 
 class HungrySingleton {
-    static _instance  = new HungrySingleton()
+    static _instance  = new HungrySingleton() // static在全局中保有一份，类似于闭包
 
     constructor() {
         // 防止类被再次实例化
